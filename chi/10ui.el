@@ -75,7 +75,7 @@
 ;; (autoload 'turn-off-screen-lines-mode "screen-lines"
 ;;   "Turn off Screen Lines minor mode for the current buffer." t)
 ;(setq-default screen-lines-mode t)
-(setq next-line-add-newlines t)
+;(setq next-line-add-newlines t)
 ;(require 'es-change-volume)
 
 ;; ido.el
