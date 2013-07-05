@@ -88,6 +88,8 @@
 (require 'init-marmalade)
 (require 'init-misc)
 
+(require 'init-chi)
+
 ;; Extra packages which don't require any configuration
 
 (require-package 'gnuplot)
