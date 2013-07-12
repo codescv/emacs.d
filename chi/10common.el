@@ -19,7 +19,7 @@
 (setq frame-title-format 
       (concat "emacs@" 
 	      (es-chomp (shell-command-to-string "hostname"))
-	      " eshock -%b"))
+	      " eshock - %b"))
 ;; let mouse pointer move away when it comes near the cursor
 (mouse-avoidance-mode 'jump)
 
@@ -81,5 +81,10 @@
 ;; ido.el
 (require 'ido)
 (ido-mode t)
-(setq diary-file "~/textfiles/diary") 
 (setq-default ido-auto-merge-delay-time 100000)
+;(setq diary-file "~/textfiles/diary") 
+
+;; find file recursively
+(add-to-list 'load-path (concat user-emacs-directory "chi/plugins"))
+(require 'find-recursive)
+(add-to-list 'find-recursive-exclude-files ".*pyc$")
