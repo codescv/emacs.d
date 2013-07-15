@@ -1,0 +1,11 @@
+# -*- coding: utf-8 -*-
+# name: try
+# contributor: Chi Zhang
+# key: try
+# expand-env: ((yas-wrap-around-region 'cua))
+# --
+try:
+    `(or yas/selected-text
+       (when cua-mode (prog1 (get-register ?0) (set-register ?0 nil))))`
+except Exception, e:$>
+    logging.error("${1:error}: %s" % str(e))

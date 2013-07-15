@@ -1,0 +1,7 @@
+(require-package 'yasnippet)
+(require 'yasnippet)
+(yas-global-mode 1)
+(global-set-key (kbd "C-c C-y") 'yas-insert-snippet)
+(setq yas-wrap-around-region 'cua)
+(setq yas-indent-line 'auto)
+(setq yas-prompt-functions '(yas-ido-prompt))
