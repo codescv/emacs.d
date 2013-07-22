@@ -1,0 +1,14 @@
+# -*- coding: utf-8 -*-
+# name: unittest
+# contributor: Chi Zhang
+# key: unittest
+# expand-env: ((yas/indent-line 'fixed))
+# --
+import unittest
+
+class TestCase(unittest.TestCase):
+    def testAll(self):
+        ${1:self.assertTrue(True)}
+
+if __name__ == '__main__':
+    unittest.main()

@@ -29,19 +29,19 @@
 (setq show-paren-style 'parenthesis)
 (setq show-paren-delay 0.5)
 
-;; color theme and fonts
+;; fonts
 (if window-system
     (progn
       ;no toolbar
       (tool-bar-mode -1)
       ;fonts
-      (set-default-font "Dejavu Sans Mono Bold 14")
+      (set-default-font "Liberation Mono 14")
       (set-fontset-font
        "fontset-default" 'chinese-gb2312
-       "Microsoft YaHei"
+       "WenQuanYi Zen Hei Sharp"
        nil 'prepend)
       (set-fontset-font (frame-parameter nil 'font)
-			'han '("Microsoft YaHei" . "unicode-bmp"))))
+			'han '("WenQuanYi Zen Hei Sharp" . "unicode-bmp"))))
 
 ;; cursor settings
 (blink-cursor-mode -1)
