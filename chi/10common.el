@@ -69,9 +69,20 @@
 (setq-default ido-auto-merge-delay-time 100000)
 
 ;; find file recursively
-
 (require 'find-recursive)
 (add-to-list 'find-recursive-exclude-files ".*pyc$")
+
+;; ibus-el
+(when (require 'ibus nil 'noerror)
+  (progn 
+    (add-hook 'after-init-hook 'ibus-mode-on)
+    ;; Use S-SPC for Set Mark command
+    (ibus-define-common-key ?\S-\s nil)
+    ;; Use C-/ for Undo command
+    (ibus-define-common-key ?\C-/ nil)
+    ;; Change cursor color depending on IBus status
+    (setq ibus-cursor-color '("blue" "red" "limegreen"))
+    (global-set-key (kbd "C-SPC") 'ibus-toggle)))
 
 ;; misc bindings
 (global-set-key (kbd "<f4>") 'kill-buffer)
