@@ -16,8 +16,8 @@
   (string-match "\\(.*\\)\n$" string)
   (substring string (match-beginning 1) (match-end 1)))
 
-(setq frame-title-format 
-      (concat "emacs@" 
+(setq frame-title-format
+      (concat "emacs@"
 	      (es-chomp (shell-command-to-string "hostname"))
 	      " eshock - %b"))
 
@@ -72,6 +72,13 @@
 (require 'find-recursive)
 (add-to-list 'find-recursive-exclude-files ".*pyc$")
 
+;; emmet
+(require-package 'emmet-mode)
+(require 'emmet-mode)
+(add-hook 'sgml-mode-hook 'emmet-mode) ;; Auto-start on any markup modes
+(add-hook 'css-mode-hook  'emmet-mode) ;; enable Emmet's css abbreviation.
+(add-hook 'emmet-mode-hook (lambda () (setq emmet-indentation 2))) ;indent 2 spaces.
+
 ;; ibus-el
 (when (require 'ibus nil 'noerror)
   (progn 
@@ -80,19 +87,41 @@
     (ibus-define-common-key ?\S-\s nil)
     ;; Use C-/ for Undo command
     (ibus-define-common-key ?\C-/ nil)
+    ;; ignore some annoying bindings
+    (ibus-define-common-key (kbd "<f5>") nil)
+    (ibus-define-common-key (kbd "<f6>") nil)
+    (ibus-define-common-key (kbd "<f7>") nil)
+    (ibus-define-common-key (kbd "<f8>") nil)
+    (ibus-define-common-key (kbd "<f9>") nil)
+    (ibus-define-common-key (kbd "<f10>") nil)
+    (ibus-define-common-key (kbd "<f11>") nil)
+    (ibus-define-common-key (kbd "<f12>") nil)
     ;; Change cursor color depending on IBus status
     (setq ibus-cursor-color '("blue" "red" "limegreen"))
     (global-set-key (kbd "C-SPC") 'ibus-toggle)))
 
+;; jslint
+
+(setq flymake-jslint-command (concat (getenv "HOME") "/.nodejs/lib/node_modules/jslint/bin/jslint.js"))
+
+;; pyflake
+(setq flymake-python-pyflakes-executable (concat (getenv "HOME") "/dk-pyenv/bin/pyflakes"))
+
+(custom-set-faces '(flymake-errline
+                    ((((class color))
+                      (:background "Red" :foreground "Black"))))
+                  '(flymake-warnline
+                    ((((class color))
+                      (:background "Yellow" :foreground "Black"))))
+                  '(js2-external-variable
+                    ((((class color))
+                      (:foreground "Red" :underline t)))))
+
 ;; misc bindings
 (global-set-key (kbd "<f4>") 'kill-buffer)
-(global-set-key (kbd "<f5>") 'smart-compile)
-(global-set-key (kbd "<f7>") '(lambda ()
-				(interactive)
-				(compile "make")))
-;;(global-set-key (kbd "<f9>") 'es-code2html-for-paste)
-(global-set-key (kbd "<f10>") 'wb-line-number-toggle)
-(global-set-key (kbd "C-<f12>") 'magit-status)
+(global-set-key (kbd "<f5>") 'flymake-display-err-menu-for-current-line)
+(global-set-key (kbd "<f6>") 'flymake-goto-next-error)
+(global-set-key (kbd "<f11>") 'magit-status)
 (global-set-key (kbd "<f12>") 'magit-log)
 
 (global-set-key (kbd "C-S-v") 'scroll-other-window)
