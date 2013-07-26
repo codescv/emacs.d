@@ -119,8 +119,10 @@
 
 ;; misc bindings
 (global-set-key (kbd "<f4>") 'kill-buffer)
-(global-set-key (kbd "<f5>") 'flymake-display-err-menu-for-current-line)
-(global-set-key (kbd "<f6>") 'flymake-goto-next-error)
+(global-set-key (kbd "<f5>") 'flycheck-buffer)
+(global-set-key (kbd "S-<f5>") 'flycheck-list-errors)
+(global-set-key (kbd "<f6>") 'flycheck-next-error)
+(global-set-key (kbd "S-<f6>") 'flycheck-previous-error)
 (global-set-key (kbd "<f11>") 'magit-status)
 (global-set-key (kbd "<f12>") 'magit-log)
 
