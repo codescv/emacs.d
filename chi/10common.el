@@ -2,7 +2,8 @@
 (add-to-list 'load-path (concat user-emacs-directory "chi/plugins"))
 
 ;; encoding
-(set-language-environment "UTF-8")
+(set-language-environment 'utf-8)
+
 ;; no startup screen
 (setq inhibit-startup-message t)
 
@@ -12,7 +13,7 @@
 (column-number-mode t)
 
 ;; title name
-(defun es-chomp(string)
+(defun es-chomp (string)
   (string-match "\\(.*\\)\n$" string)
   (substring string (match-beginning 1) (match-end 1)))
 
@@ -55,7 +56,6 @@
 (setq woman-use-own-frame nil)
 (setq visible-bell t)
 (display-time)
-(set-language-environment 'utf-8)
 
 ;; M-y for yes, M-n for no
 ;(require 'quick-yes)
@@ -81,7 +81,7 @@
 
 ;; ibus-el
 (when (require 'ibus nil 'noerror)
-  (progn 
+  (progn
     (add-hook 'after-init-hook 'ibus-mode-on)
     ;; Use S-SPC for Set Mark command
     (ibus-define-common-key ?\S-\s nil)
@@ -100,22 +100,7 @@
     (setq ibus-cursor-color '("blue" "red" "limegreen"))
     (global-set-key (kbd "C-SPC") 'ibus-toggle)))
 
-;; jslint
-
-(setq flymake-jslint-command (concat (getenv "HOME") "/.nodejs/lib/node_modules/jslint/bin/jslint.js"))
-
-;; pyflake
-(setq flymake-python-pyflakes-executable (concat (getenv "HOME") "/dk-pyenv/bin/pyflakes"))
-
-(custom-set-faces '(flymake-errline
-                    ((((class color))
-                      (:background "Red" :foreground "Black"))))
-                  '(flymake-warnline
-                    ((((class color))
-                      (:background "Yellow" :foreground "Black"))))
-                  '(js2-external-variable
-                    ((((class color))
-                      (:foreground "Red" :underline t)))))
+(setq flycheck-check-syntax-automatically '(save))
 
 ;; misc bindings
 (global-set-key (kbd "<f4>") 'kill-buffer)
