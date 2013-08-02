@@ -3,6 +3,7 @@
 
 ;; encoding
 (set-language-environment 'utf-8)
+(require 'unicad)
 
 ;; no startup screen
 (setq inhibit-startup-message t)
@@ -108,6 +109,9 @@
 (global-set-key (kbd "S-<f5>") 'flycheck-list-errors)
 (global-set-key (kbd "<f6>") 'flycheck-next-error)
 (global-set-key (kbd "S-<f6>") 'flycheck-previous-error)
+(global-set-key (kbd "<f7>") '(lambda ()
+                                (interactive)
+                                (compile "make")))
 (global-set-key (kbd "<f11>") 'magit-status)
 (global-set-key (kbd "<f12>") 'magit-log)
 

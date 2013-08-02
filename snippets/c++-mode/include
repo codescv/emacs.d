@@ -1,0 +1,15 @@
+# -*- coding: utf-8 -*-
+# name: include
+# contributor: Chi Zhang
+# key: include
+# --
+
+#include <iostream>
+#include <string>
+#include <vector>
+#include <map>
+#include <set>
+#include <cmath>
+#include <climits>
+
+using namespace std;
