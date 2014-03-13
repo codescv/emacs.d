@@ -43,7 +43,11 @@
        "WenQuanYi Zen Hei Sharp"
        nil 'prepend)
       (set-fontset-font (frame-parameter nil 'font)
-			'han '("WenQuanYi Zen Hei Sharp" . "unicode-bmp"))))
+			'han '("WenQuanYi Zen Hei Sharp" . "unicode-bmp"))
+      ;window size
+      (add-to-list 'default-frame-alist 
+                   (cons 'height (/ (- (x-display-pixel-height) 200)
+                                    (frame-char-height))))))
 
 ;; cursor settings
 (blink-cursor-mode -1)
@@ -103,6 +107,13 @@
 
 (setq flycheck-check-syntax-automatically '(save))
 
+(custom-set-variables 
+ '(js2-basic-offset 2)
+ '(js2-bounce-indent-p t))
+
+(require-package 'gist)
+(require 'gist)
+
 ;; misc bindings
 (global-set-key (kbd "<f4>") 'kill-buffer)
 (global-set-key (kbd "<f5>") 'flycheck-buffer)
@@ -112,6 +123,7 @@
 (global-set-key (kbd "<f7>") '(lambda ()
                                 (interactive)
                                 (compile "make")))
+(global-set-key (kbd "<f8>") 'shell-command)
 (global-set-key (kbd "<f11>") 'magit-status)
 (global-set-key (kbd "<f12>") 'magit-log)
 

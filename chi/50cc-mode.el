@@ -8,6 +8,11 @@
        '(lambda ()
        (c-set-style "stroustrup")))
 
+;; use indentation in case
+;; (add-hook 'c-mode-common-hook
+;;           (lambda ()
+;;              (c-set-offset 'case-label +)))
+
 (define-key c-mode-base-map (kbd "RET") 'newline-and-indent)
 ;(define-key c-mode-base-map (kbd "M-/") 'senator-complete-symbol)
 ;(define-key c-mode-base-map (kbd "C--") 'senator-fold-tag)
