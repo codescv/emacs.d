@@ -37,7 +37,7 @@
       ;no toolbar
       (tool-bar-mode -1)
       ;fonts
-      (set-default-font "Liberation Mono 14")
+      (set-default-font "Dejavu Sans Mono 14")
       (set-fontset-font
        "fontset-default" 'chinese-gb2312
        "WenQuanYi Zen Hei Sharp"
